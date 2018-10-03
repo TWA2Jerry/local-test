@@ -39,6 +39,8 @@ void insert(point * test, int d) {
 			else{
 				current->right = (point*)malloc(sizeof(point));
 				current->right->val = d;
+                current->right->left = NULL;
+                current->right->right = NULL;
 
 			}	
 		}
@@ -53,6 +55,8 @@ void insert(point * test, int d) {
 			else{
 				current->left = (point*)malloc(sizeof(point));
 				current->left->val = d;
+                current->left->left = NULL;
+                current->left->right = NULL;
 			}
 
 		}	
@@ -113,7 +117,7 @@ int main(void) {
         
     }
     
-    
+    printf("This is still working\n");
     
 	printinorderDFS(head);
 	printpreorderDFS(head);
