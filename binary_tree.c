@@ -1,9 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "/Users/JZ/Documents/Programming/binary_templates/binary_struct_def.c"
+/*yeah look, I know the function intialisations should be at the bottom, but I honestly just couldn't be bothered*/ 
+
 
 point * initialise_list(void) {
 
+	
+				
 	point * start = NULL;
 	start = (point*)malloc(sizeof(point));
 	start->val = 0;
@@ -20,14 +24,20 @@ void create_list(point * head) {
 	point * current = head;
 	
 
-	for( ; i<11;i++) {
+	for( ; i<10;i++) {
 		
 		current->val = i;
 		current->right = (point*)malloc(sizeof(point));
+		current->left = NULL;
 		current = current->right;
 
 
 	}
+
+	current->val = 10;
+	current->right = NULL;
+	current->left = NULL;
+	
 
 }
 
@@ -71,10 +81,37 @@ void insert(point * test, int d) {
 
 }
 
-void printDFS(point * start) {
+void printinorderDFS(point * start) {
 
-	point * start = start;
-	if(start
+	if(start != NULL) {
+
+		printinorderDFS(start->left);
+		printf("%d\n",start->val);
+		printinorderDFS(start->right);
+	}
+
+}
+
+void printpreorderDFS(point * start) {
+	
+	if(start != NULL) {
+
+		printf("%d\n",start->val);
+		printpreorderDFS(start->left);
+		printpreorderDFS(start->right);
+		
+	}
+}
+
+void printpostorderDFS(point * start) {
+
+	if(start != NULL) {
+		printpostorderDFS(start->right);
+		printf("%d\n",start->val);
+		printpostorderDFS(start->left);
+
+
+	}
 
 }
 
@@ -83,6 +120,9 @@ int main(void) {
 
 	point*head = initialise_list();
 	create_list(head);
+	printinorderDFS(head);
+	printpreorderDFS(head);
+	printpostorderDFS(head);
 	printf("This is working\n");
 	printf("This is to test if github is working\n");
 	return 0;
