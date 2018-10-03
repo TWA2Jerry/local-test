@@ -71,7 +71,12 @@ void insert(point * test, int d) {
 
 }
 
+void printDFS(point * start) {
 
+	point * start = start;
+	if(start
+
+}
 
 
 int main(void) {
