@@ -79,6 +79,6 @@ int main(void) {
 	point*head = initialise_list();
 	create_list(head);
 	printf("This is working\n");
-
+	printf("This is to test if github is working\n");
 	return 0;
 }
